@@ -1,4 +1,5 @@
 const divider = "||"
+const blank = '         '
 
 class BankAccount {
   constructor() {
@@ -7,20 +8,43 @@ class BankAccount {
   }
 
    depositMoney(date, amount) {
+      this.balance += amount
       
       const deposit = {
         depositDate: date,
         dividerOne: divider,
-        credit: '         ',
+        credit: amount,
         dividerTwo: divider,
-        debit: amount,
+        debit: blank,
         dividerThree: divider,
         balance: this.balance
       }
 
       this.transactions.push(deposit);
-     
-      return this.transactions[0]
+      for (let i=0; i<this.transactions.length; i++)
+      return this.transactions[i]
+  }
+
+  withdrawMoney(date, amount) {
+    this.balance -= amount
+
+    const withdrawal = {
+      depositDate: date,
+      dividerOne: divider,
+      credit: blank,
+      dividerTwo: divider,
+      debit: amount,
+      dividerThree: divider,
+      balance: this.balance
+    }
+
+    this.transactions.push(withdrawal);
+      for (let i=0; i<this.transactions.length; i++)
+      return this.transactions[i]
+  }
+
+  printStatement() {
+    
   }
 
 }
