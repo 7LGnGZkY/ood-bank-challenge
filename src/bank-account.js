@@ -5,18 +5,16 @@ class BankAccount {
   constructor() {
       this.transactions = [];
       this.balance = 0;
+      
   }
 
    depositMoney(date, amount) {
       this.balance += amount
       
       const deposit = {
-        depositDate: date,
-        dividerOne: divider,
+        date: date,
         credit: amount,
-        dividerTwo: divider,
         debit: blank,
-        dividerThree: divider,
         balance: this.balance
       }
 
@@ -29,12 +27,9 @@ class BankAccount {
     this.balance -= amount
 
     const withdrawal = {
-      depositDate: date,
-      dividerOne: divider,
+      date: date,
       credit: blank,
-      dividerTwo: divider,
       debit: amount,
-      dividerThree: divider,
       balance: this.balance
     }
 
@@ -43,8 +38,15 @@ class BankAccount {
       return this.transactions[i]
   }
 
+
   printStatement() {
     
+    const printHeader = "date || credit  || debit  || balance"
+
+    const printTransactions = "" + this.transactions[0].date + divider + " " + (Math.round(this.transactions[0].credit * 100) / 100).toFixed(2) + " " + divider + "         " + divider + " " + (Math.round(this.balance * 100) / 100).toFixed(2);
+      
+    return `${printHeader}\n${printTransactions}`
+
   }
 
 }
